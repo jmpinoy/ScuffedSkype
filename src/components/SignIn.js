@@ -9,11 +9,13 @@ function SignIn() {
             <div id="flex-child">
                 <div id="signin-head">
                     <AccountCircleRoundedIcon fontSize="large" />
-                    <h1>Sign In</h1>
+                    <h2>Sign In</h2>
                 </div>
-                <div id="signin-credentials">
+                <div id="first-name">
                     <TextField label="First Name" />
                     <br />
+                    </div>
+                    <div id="last-name">
                     <TextField label="Last Name" />
                 </div>
                 <br />

@@ -47,8 +47,8 @@
   margin-top: 10%;
 }
 
-#signin-credentials {
-  margin-bottom: 15px;
+#first-name, #last-name {
+  margin-bottom: 20px;
 }
 #signin-button {
   width: 100%;
