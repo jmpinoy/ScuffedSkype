@@ -1,7 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
 import { TextField } from '@material-ui/core'
-import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded'
 
 function SignIn() {
     return (
@@ -11,12 +10,9 @@ function SignIn() {
                     <i class="fas fa-user-circle fa-3x"></i>
                     <h1>Sign In</h1>
                 </div>
-                <div id="first-name">
-                    <TextField label="First Name" />
+                <div id="display-name">
+                    <TextField placeholder={{style: {textAlign: 'center'}}} placeholder = "Hello World" inputProps={{ style: {textAlign: 'center'} }} label="Display Name" />
                     <br />
-                </div>
-                <div id="last-name">
-                    <TextField label="Last Name" />
                 </div>
                 <br />
                 <div id="signin-button">

@@ -44,11 +44,12 @@
   background-color: white;
 }
 #signin-head {
-  margin-top: 10%;
+  margin-top: 20%;
 }
 
-#first-name, #last-name {
-  margin-bottom: 20px;
+#display-name {
+  margin-top: 35px;
+  margin-bottom: 35px;
 }
 #signin-button {
   width: 100%;
