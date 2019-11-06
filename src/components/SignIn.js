@@ -18,7 +18,7 @@ function SignIn() {
                 <div id="signin-button">
                     <Button size="small" variant="outlined" color="default">
                         Connect
-                </Button>
+                    </Button>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 html {
   background-size: cover;
-  background-image: url("SignIn-Background.jpg");
+  background-image: url("assets/SignIn-Background.jpg");
 }
 
 html, body, #root {
