@@ -1,3 +1,13 @@
+html {
+  background-size: cover;
+  background-image: url("SignIn-Background.jpg");
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
