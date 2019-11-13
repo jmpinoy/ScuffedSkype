@@ -1,0 +1,80 @@
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-size: cover;
+  background-image: url('../assets/signin-background.jpg');
+  margin: 0;
+}
+
+/****** SIGN IN PAGE ****/
+
+#flex-parent {
+  position: relative;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+#flex-child {
+  display: block;
+  position: absolute;
+  text-align: center;
+  background-color: white;
+  width: 20%;
+  height: 47.5%;
+  box-shadow: 8px 16px 22px 5px rgba(0,0,0,0.36);
+  -webkit-box-shadow: 8px 16px 22px 5px rgba(0,0,0,0.36);
+  -moz-box-shadow: 8px 16px 22px 5px rgba(0,0,0,0.36);
+  opacity: .8;
+  border-radius: 15px;
+}
+
+#flex-element {
+  width: 100%;
+  height: 100%;
+  padding: 15% 10%;
+}
+
+/****** ANIMATIONS HERE ****/
+
+.animateFullScreen {
+  animation-fill-mode: forwards;
+  -webkit-animation-name: fullscreen; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+  animation-name: fullscreen;
+  animation-duration: 1s;
+}
+
+@keyframes fullscreen {
+  from {
+    border-radius: 15px;
+    width: 20%;
+    height: 47.5%;
+    opacity: .8;
+  }
+  to {
+    border-radius: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fullscreen {
+  from {
+    border-radius: 15px;
+    width: 20%;
+    height: 47.5%;
+    opacity: .8;
+  }
+  to {
+    border-radius: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+}
