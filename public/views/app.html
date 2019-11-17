@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8" />
     <script src="../scripts/jquery-3.4.1.min.js"></script>
-    <script src="../scripts/app.js"></script>
     <link rel="stylesheet" href="../styles/app.css">
     <link rel="stylesheet" href="../styles/fontawesome-free-5.11.2-web/css/all.css">
     <link rel="stylesheet" href="../styles/bootstrap-4.3.1-dist/css/bootstrap.min.css">
@@ -20,25 +19,23 @@
     </div> <!-- app-heading-container -->
 
     <div id="chat-view">
-        <div id="chat-container">
 
-            <div id="chat-users">
+        <div id="chat-message">
+            <canvas id="myCanvas"></canvas>
+        </div>
 
-            </div>
-
-            <div id="chat-message">
-
-                <div id="flex-message-1">
+        <div id="chat-form">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter message"
+                    aria-label="Enter message" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button onClick="pushBalloon();" class="btn btn-outline-secondary" type="button">Send</button>
+                    <button class="btn btn-outline-secondary" type="button">Disconnect</button>
                 </div>
+            </div> <!-- chat-form -->
+        </div> <!-- chat-message -->
 
-                <div id="flex-message-2">
-                    <div id="send-container">
-                            <input placeholder="Enter message" type="text">
-                    </div> <!-- send-container -->
-                </div> <!-- flex-message-2 -->
-            </div> <!-- chat-message -->
-        </div> <!-- chat-container -->
     </div> <!-- chat-view -->
 </body>
-
+<script src="../scripts/app.js"></script>
 </html>
