@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8" />
-  <script src="jquery-3.4.1.min.js"></script>
-  <link rel="stylesheet" href="styles/index.css">
-  <link rel="stylesheet" href="styles/fontawesome-free-5.11.2-web/css/all.css">
-  <link rel="stylesheet" href="styles/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+  <script src="../scripts/jquery-3.4.1.min.js"></script>
+  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="../styles/fontawesome-free-5.11.2-web/css/all.css">
+  <link rel="stylesheet" href="../styles/bootstrap-4.3.1-dist/css/bootstrap.min.css">
   <title>Scuffed Skype</title>
 </head>
 
@@ -16,7 +16,9 @@
   <div id="flex-parent">
     <div id="flex-child">
       <div id="flex-element">
+
         <i class="fas fa-user-circle fa-3x mb-2"></i>
+        
         <div class="row mt-4 mb-4">
           <div class="col-lg-10 offset-lg-1 text-center">
             <h3 class="display-5 mb-5">Scuffed Skype</h3>
@@ -30,7 +32,7 @@
         </div> <!-- row ...  -->
 
         <div class="btn-group">
-          <input type="button" value="CONNECT" onclick="signIn()" class="btn btn-outline-dark btn-md"></input>
+          <input type="button" value="Connect" onclick="signIn()" class="btn btn-outline-dark btn-md"></input>
         </div>
 
       </div> <!-- flex-element -->
@@ -51,11 +53,16 @@
 
       $('#flex-element').fadeOut(500,
         function () {
-          $(this).css({ "visibility": "hidden", display: 'block' }).fadeOut();
+          $(this).css({ "visibility": "hidden", display: 'block' });
         });
+
+      // fix later
+      setTimeout(function () { window.location.href = "app.html?name=" + name; }, 2000);
 
     }
     else {
+      // TODO: CLAYTON
+      // INPUT MODAL
       alert('Enter display name.');
     }
   }
