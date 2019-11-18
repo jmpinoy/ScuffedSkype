@@ -24,6 +24,7 @@ body {
 #flex-child {
   display: block;
   position: absolute;
+  overflow: hidden;
   text-align: center;
   background-color: white;
   width: 300px;

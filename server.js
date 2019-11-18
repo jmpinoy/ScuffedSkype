@@ -10,7 +10,7 @@ app.use(express.static('public'));
 app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 
 // Redirect all traffic to index.html
-app.use((req, res) => res.sendFile(`${__dirname}/public/index.html`));
+app.use((req, res) => res.sendFile(`${__dirname}/public/views/index.html`));
 
 app.listen(port, () => {
   console.info('listening on %d', port);
