@@ -1,38 +1,78 @@
-var params = new URLSearchParams(document.location.search.substring(1));
-var name = params.get("name")
+var name;
 var canvas = document.getElementById("myCanvas");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 var ctx = canvas.getContext("2d");
 var balloons = [];
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-$(document).ready(function () {
-    document.getElementsByClassName('app-head')[0].innerHTML = "hello " + name;
+$('.chat-head').hide();
 
-    $('.app-head').fadeIn(1000, function () {
-        $(this).css({ "visibility": "show", display: 'block' });
-    })
+function signIn() {
+    name = $('.form-group')[0].children[0].value;
+    var box = $('#flex-child');
+    document.getElementsByClassName('chat-head')[0].innerHTML = "hello " + name;
 
-    // fix later
-    setTimeout(function () {
-        $('.app-head').fadeOut(2000, function () {
-            $(this).css({ 'visibility': 'hidden', 'display': 'none' });
-            $('#app-heading-container').css({ 'visibility': 'hidden', 'display': 'none' });
+    if (name != "") {
+
+        box.addClass('animateFullScreen');
+
+        $('#flex-element').fadeOut(500,
+            function () {
+                $(this).css({ "visibility": "hidden", display: 'none' });
+            });
+
+        $('#flex-child').on("webkitAnimationEnd oAnimationEnd msAnimationEnd animationend", function (e) {
+            $(this).css({ 'display': 'flex' });
+
+            $('.chat-head').fadeIn(1000, function () {
+                $(this).css({ 'visibility': 'show' });
+            })
         })
-    }, 100);
-});
+
+        // fix later
+        setTimeout(function () {
+            $('.chat-head').fadeOut(2000, function () {
+                $(this).css({ 'visibility': 'hidden', 'display': 'none' });
+            })
+        }, 3000);
+
+        // fix later
+        setTimeout(function () {
+            $('#flex-child').css({ 'display': 'block' });
+            $('#chat-message').css({ 'display': 'block' });
+            $('#chat-form').css({ 'display': 'block' });
+        }, 5000);
+
+    }
+    else {
+        // TODO: CLAYTON
+        // INPUT MODAL
+        alert('Enter display name.');
+    }
+}
+
+function enter(e) {
+    console.log(e);
+    if (e.key == 'Enter' && e.target.dataset.type == 'send-balloon')
+    {
+        pushBalloon();
+    }
+    if (e.key == 'Enter' && e.target.dataset.type == 'sign-in')
+    {
+        signIn();
+    }
+}
 
 function voiceChat() {
     var type = document.getElementsByClassName('input-group')[0].children[1].children[1];
     var message;
-    if (type.textContent == 'Join Voice')
-    {
+    if (type.textContent == 'Join Voice') {
         type.textContent = 'Disconnect';
         message = 'Hello ' + name;
-    } 
+    }
     else {
         type.textContent = 'Join Voice';
-        message = 'Bye ' + name;
+        message = 'Later ' + name;
     }
     balloons.push(new Balloon(message));
 }
@@ -109,82 +149,82 @@ function drawBalloon() {
             var centerX = balloons[i].x;
             var centerY = balloons[i].y;
             var radius = balloons[i].radius;
-            
-            var handleLength = (4 * (Math.sqrt(2) - 1))/3 * radius;
-            
+
+            var handleLength = (4 * (Math.sqrt(2) - 1)) / 3 * radius;
+
             var widthDiff = (radius * 0.0333);
             var heightDiff = (radius * .4);
-            
+
             var balloonBottomY = centerY + radius + heightDiff;
-            
+
             // Begin balloon path
-            
+
             ctx.beginPath();
-        
+
             // Top Left Curve
-            
+
             var topLeftCurveStartX = centerX - radius;
             var topLeftCurveStartY = centerY;
-            
+
             var topLeftCurveEndX = centerX;
             var topLeftCurveEndY = centerY - radius;
-            
+
             ctx.moveTo(topLeftCurveStartX, topLeftCurveStartY);
             ctx.bezierCurveTo(topLeftCurveStartX, topLeftCurveStartY - handleLength - widthDiff,
-                                    topLeftCurveEndX - handleLength, topLeftCurveEndY,
-                                    topLeftCurveEndX, topLeftCurveEndY);
-                                    
+                topLeftCurveEndX - handleLength, topLeftCurveEndY,
+                topLeftCurveEndX, topLeftCurveEndY);
+
             // Top Right Curve
-            
+
             var topRightCurveStartX = centerX;
             var topRightCurveStartY = centerY - radius;
-            
+
             var topRightCurveEndX = centerX + radius;
             var topRightCurveEndY = centerY;
-            
+
             ctx.bezierCurveTo(topRightCurveStartX + handleLength + widthDiff, topRightCurveStartY,
-                                    topRightCurveEndX, topRightCurveEndY - handleLength,
-                                    topRightCurveEndX, topRightCurveEndY);
-                                                
+                topRightCurveEndX, topRightCurveEndY - handleLength,
+                topRightCurveEndX, topRightCurveEndY);
+
             // Bottom Right Curve
-            
+
             var bottomRightCurveStartX = centerX + radius;
             var bottomRightCurveStartY = centerY;
-            
+
             var bottomRightCurveEndX = centerX;
             var bottomRightCurveEndY = balloonBottomY;
-            
+
             ctx.bezierCurveTo(bottomRightCurveStartX, bottomRightCurveStartY + handleLength,
-                                    bottomRightCurveEndX + handleLength, bottomRightCurveEndY,
-                                    bottomRightCurveEndX, bottomRightCurveEndY);							
-            
+                bottomRightCurveEndX + handleLength, bottomRightCurveEndY,
+                bottomRightCurveEndX, bottomRightCurveEndY);
+
             // Bottom Left Curve
-            
+
             var bottomLeftCurveStartX = centerX;
             var bottomLeftCurveStartY = balloonBottomY;
-            
+
             var bottomLeftCurveEndX = centerX - radius;
             var bottomLeftCurveEndY = centerY;
-            
+
             ctx.bezierCurveTo(bottomLeftCurveStartX - handleLength, bottomLeftCurveStartY,
-                                    bottomLeftCurveEndX, bottomLeftCurveEndY + handleLength,
-                                    bottomLeftCurveEndX, bottomLeftCurveEndY);
-            
+                bottomLeftCurveEndX, bottomLeftCurveEndY + handleLength,
+                bottomLeftCurveEndX, bottomLeftCurveEndY);
+
             // Create balloon color
             ctx.fillStyle = balloons[i].color;
-            ctx.fill();                      
-            
+            ctx.fill();
+
             // Create balloon tie
-            
-            var halfTieWidth = (radius * .12)/2;
+
+            var halfTieWidth = (radius * .12) / 2;
             var tieHeight = (radius * .12);
             var tieCurveHeight = (radius * .13);
-            
+
             ctx.beginPath();
             ctx.moveTo(centerX - 1, balloonBottomY);
             ctx.lineTo(centerX - halfTieWidth, balloonBottomY + tieHeight);
             ctx.quadraticCurveTo(centerX, balloonBottomY + tieCurveHeight,
-                                        centerX + halfTieWidth, balloonBottomY + tieHeight);
+                centerX + halfTieWidth, balloonBottomY + tieHeight);
             ctx.lineTo(centerX + 1, balloonBottomY);
             ctx.fill();
 

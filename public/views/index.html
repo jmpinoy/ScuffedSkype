@@ -12,61 +12,42 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-
   <div id="flex-parent">
     <div id="flex-child">
+      <h1 class="chat-head" style="font-size: 150px"></h1>
+      <div id="chat-message">
+        <canvas id="myCanvas"></canvas>
+      </div> <!-- chat-message -->
+      <div id="chat-form">
+        <div class="input-group">
+          <input type="text" data-type="send-balloon" maxlength="18" onkeypress="enter(event)" class="form-control" placeholder="Enter message (maximum of 18 characters)"
+            aria-label="Enter message (maximum of 18 characters)" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button onClick="pushBalloon();" class="btn btn-outline-secondary" type="button">Send</button>
+            <button onClick="voiceChat();" class="btn btn-outline-secondary" type="button">Join Voice</button>
+          </div> <!-- input-group-append -->
+        </div> <!-- input-group -->
+      </div> <!-- chat-form -->
       <div id="flex-element">
-
         <i class="fas fa-user-circle fa-3x mb-2"></i>
-        
         <div class="row mt-4 mb-4">
           <div class="col-lg-10 offset-lg-1 text-center">
             <h3 class="display-5 mb-5">Scuffed Skype</h3>
             <form>
               <div class="form-group">
-                <input type="text" placeholder="Display Name" class="form-control form-control-inline"
+                <input type="text" data-type="sign-in" maxlength="8" placeholder="Display Name" class="form-control form-control-inline"
                   style="text-align: center;" />
               </div> <!-- form-group -->
             </form> <!-- form -->
           </div> <!-- col-lg-10 ... -->
         </div> <!-- row ...  -->
-
         <div class="btn-group">
           <input type="button" value="Connect" onclick="signIn()" class="btn btn-outline-dark btn-md"></input>
-        </div>
-
+        </div> <!-- btn-group -->
       </div> <!-- flex-element -->
     </div> <!-- flex-child -->
   </div> <!-- flex-parent -->
-
 </body>
-<script language="javascript">
-
-  function signIn() {
-
-    var box = $('#flex-child');
-    var name = $('.form-group')[0].children[0].value;
-
-    if (name != "") {
-
-      box.addClass('animateFullScreen');
-
-      $('#flex-element').fadeOut(500,
-        function () {
-          $(this).css({ "visibility": "hidden", display: 'block' });
-        });
-
-      // fix later
-      setTimeout(function () { window.location.href = "app.html?name=" + name; }, 2000);
-
-    }
-    else {
-      // TODO: CLAYTON
-      // INPUT MODAL
-      alert('Enter display name.');
-    }
-  }
-
-</script>
-
+<script src="../scripts/index.js"></script>
+<script src="../scripts/client.js"></script>
 </html>
