@@ -1,16 +1,17 @@
-// TODO: Please connect html/css/js files to server.
+const express = require('express');
 
-const http = require('http');
+const app = express();
+const port = 3000;
 
-// Create an instance of the http server to handle HTTP requests
-let app = http.createServer((req, res) => {
-    // Set a response type of plain text for the response
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+// Set public folder as root
+app.use(express.static('public'));
 
-    // Send back a response and end the connection
-    res.end('Hello World!\n');
+// Provide access to node_modules folder from the client-side
+app.use('/scripts', express.static(`${__dirname}/node_modules/`));
+
+// Redirect all traffic to index.html
+app.use((req, res) => res.sendFile(`${__dirname}/public/index.html`));
+
+app.listen(port, () => {
+  console.info('listening on %d', port);
 });
-
-// Start the server on port 3000
-app.listen(3000, '127.0.0.1');
-console.log('Node server running on port 3000');
