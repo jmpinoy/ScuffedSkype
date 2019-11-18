@@ -24,6 +24,7 @@ body {
 #flex-child {
   display: block;
   position: absolute;
+  overflow: hidden;
   text-align: center;
   background-color: white;
   width: 300px;
@@ -33,6 +34,8 @@ body {
   -moz-box-shadow: 8px 16px 22px 5px rgba(0,0,0,0.36);
   opacity: .8;
   border-radius: 15px;
+  justify-content: center;
+  align-items: center;
 }
 
 #flex-element {
@@ -79,4 +82,33 @@ body {
     height: 100%;
     opacity: 1;
   }
+}
+
+/***** APP HERE *****/
+
+.chat-head {
+  width: 100%;
+  height: 30%;
+  margin: 0;
+}
+#chat-view {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#chat-message {
+  display: none;
+  width: 100%;
+  height: 90%;
+}
+
+
+#chat-form {
+  display: none;
+  width: 40%;
+  height: 40%;
+  margin: 0 auto;
+  padding-top: 15px;
 }
