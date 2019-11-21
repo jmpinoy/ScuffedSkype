@@ -51,18 +51,6 @@ function signIn() {
     }
 }
 
-function enter(e) {
-    console.log(e);
-    if (e.key == 'Enter' && e.target.dataset.type == 'send-balloon')
-    {
-        pushBalloon();
-    }
-    if (e.key == 'Enter' && e.target.dataset.type == 'sign-in')
-    {
-        signIn();
-    }
-}
-
 function voiceChat() {
     var type = document.getElementsByClassName('input-group')[0].children[1].children[1];
     var message;
@@ -77,9 +65,8 @@ function voiceChat() {
     balloons.push(new Balloon(message));
 }
 
-function pushBalloon() {
-    var input = document.getElementsByClassName('input-group')[0].children[0];
-    balloons.push(new Balloon(input.value));
+function pushBalloon(message) {
+    balloons.push(new Balloon(message));
 }
 
 function chunkSubstr(str, size) {

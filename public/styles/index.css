@@ -112,3 +112,7 @@ body {
   margin: 0 auto;
   padding-top: 15px;
 }
+
+#chat-count {
+  margin-top: 10px;
+}
