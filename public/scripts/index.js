@@ -51,20 +51,6 @@ function signIn() {
     }
 }
 
-function voiceChat() {
-    var type = document.getElementsByClassName('input-group')[0].children[1].children[1];
-    var message;
-    if (type.textContent == 'Join Voice') {
-        type.textContent = 'Disconnect';
-        message = 'Hello ' + name;
-    }
-    else {
-        type.textContent = 'Join Voice';
-        message = 'Later ' + name;
-    }
-    balloons.push(new Balloon(message));
-}
-
 function pushBalloon(message) {
     balloons.push(new Balloon(message));
 }

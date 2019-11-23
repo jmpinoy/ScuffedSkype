@@ -114,5 +114,9 @@ body {
 }
 
 #chat-count {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50px);
   margin-top: 10px;
 }
