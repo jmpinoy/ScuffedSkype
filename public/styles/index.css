@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-  background-image: url('../assets/signin-background.jpg');
+  background-image: url('../assets/signin-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
