@@ -49,6 +49,7 @@ function signIn() {
         // INPUT MODAL
         alert('Enter display name.');
     }
+
 }
 
 function pushBalloon(message) {

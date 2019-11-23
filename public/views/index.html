@@ -21,7 +21,7 @@
       </div> <!-- chat-message -->
       <div id="chat-form">
         <div class="input-group">
-          <input type="text" data-type="send-balloon" maxlength="18" class="form-control"
+          <input onkeypress="enterKey(event);" type="text" data-type="send-balloon" maxlength="18" class="form-control"
             placeholder="Enter message (maximum of 18 characters)" aria-label="Enter message (maximum of 18 characters)"
             aria-describedby="basic-addon2">
           <div class="input-group-append">
@@ -37,8 +37,8 @@
             <h3 class="display-5 mb-5">Balloon Chat</h3>
             <form>
               <div class="form-group">
-                <input type="text" data-type="sign-in" maxlength="8" placeholder="Display Name"
-                  class="form-control form-control-inline" style="text-align: center;" />
+                <input onkeypress="enterKey(event);" type="text" data-type="sign-in" maxlength="8"
+                  placeholder="Display Name" class="form-control form-control-inline" style="text-align: center;" />
               </div> <!-- form-group -->
             </form> <!-- form -->
           </div> <!-- col-lg-10 ... -->
@@ -53,10 +53,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script>
-    var socket = io({ transports: ['websocket'] }).connect('http://localhost');
 
+    var socket = io({ transports: ['websocket'] }).connect('http://localhost');
     var sendButton = document.getElementsByClassName('input-group-append')[0].children[0];
     var voiceButton = document.getElementsByClassName('input-group-append')[0].children[1];
+
+    function enterKey(e) {
+      if (e.target.dataset.type == 'send-balloon' && e.key == 'Enter') {
+        sendButton.click();
+      }
+      else if (e.target.dataset.type == 'sign-in' && e.key == 'Enter') {
+        // prevent the page from reloading
+        e.preventDefault();
+        signIn();
+      }
+    }
 
     sendButton.addEventListener('click', function () {
       var input = document.getElementsByClassName('input-group')[0].children[0];
