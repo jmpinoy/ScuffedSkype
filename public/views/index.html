@@ -26,7 +26,7 @@
             aria-describedby="basic-addon2">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button">Send</button>
-            <button onClick="voiceChat();" class="btn btn-outline-secondary" type="button">Join Voice</button>
+            <button class="btn btn-outline-secondary" type="button">Join Voice</button>
           </div> <!-- input-group-append -->
         </div> <!-- input-group -->
       </div> <!-- chat-form -->
@@ -54,12 +54,26 @@
   <script src="/socket.io/socket.io.js"></script>
   <script>
     var socket = io({ transports: ['websocket'] }).connect('http://localhost');
-    var button = document.getElementsByClassName('input-group-append')[0].children[0];
-    var input = document.getElementsByClassName('input-group')[0].children[0];
 
-    // emit to server
-    button.addEventListener('click', function () {
-      socket.emit('balloon message', input.value);
+    var sendButton = document.getElementsByClassName('input-group-append')[0].children[0];
+    var voiceButton = document.getElementsByClassName('input-group-append')[0].children[1];
+
+    sendButton.addEventListener('click', function () {
+      var input = document.getElementsByClassName('input-group')[0].children[0];
+      emitBalloon(input.value);
+      input.value = '';
+    });
+
+    voiceButton.addEventListener('click', function () {
+      var type = document.getElementsByClassName('input-group')[0].children[1].children[1];
+      if (type.textContent == 'Join Voice') {
+        type.textContent = 'Disconnect';
+        emitBalloon(name + ' joined');
+      }
+      else {
+        type.textContent = 'Join Voice';
+        emitBalloon(name + ' left');
+      }
     });
 
     // listens to server
@@ -70,6 +84,11 @@
     socket.on('client counter', function (counter) {
       document.getElementById('chat-count').innerHTML = "Online: " + counter;
     });
+
+    // emit to server
+    function emitBalloon(msg) {
+      socket.emit('balloon message', msg);
+    }
 
   </script>
 </body>
