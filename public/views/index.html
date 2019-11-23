@@ -61,6 +61,7 @@
     sendButton.addEventListener('click', function () {
       var input = document.getElementsByClassName('input-group')[0].children[0];
       emitBalloon(input.value);
+      input.value = '';
     });
 
     voiceButton.addEventListener('click', function () {
